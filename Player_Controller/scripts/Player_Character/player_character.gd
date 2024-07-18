@@ -81,8 +81,8 @@ func _input(event: InputEvent) -> void:
 				crouch()
 		
 	if enable_sprint:
-		if Input.is_action_just_released("sprint") or Input.is_action_just_released("walk"):
-			if !(Input.is_action_pressed("walk") or Input.is_action_pressed("sprint")):
+		if Input.is_action_just_released("sprint"):
+			if !Input.is_action_pressed("sprint"):
 				speed_modifier = NORMAL_speed
 				exit_sprint()
 
@@ -90,9 +90,6 @@ func _input(event: InputEvent) -> void:
 			if !sprint_on_cooldown:
 				speed_modifier = sprint_speed
 				sprint_timer.start(sprint_time_remaining)
-
-		if Input.is_action_just_pressed("walk") and !crouched:
-			speed_modifier = walk_speed
 
 func calculate_movement_parameters() -> void:
 	jump_gravity = (2*jump_height)/pow(jump_peak_time,2)

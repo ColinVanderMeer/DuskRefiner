@@ -185,7 +185,7 @@ func drop(_slot: WeaponSlot) -> void:
 func _on_animation_finished(anim_name):
 	if anim_name == current_weapon_slot.weapon.shoot_animation:
 		if current_weapon_slot.weapon.auto_fire == true:
-				if Input.is_action_pressed("Shoot"):
+				if Input.is_action_pressed("primaryButton"):
 					shoot()
 
 	if anim_name == current_weapon_slot.weapon.change_animation:
