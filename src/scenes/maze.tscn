@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://citx1l6jnaraa"]
+[gd_scene load_steps=5 format=3 uid="uid://citx1l6jnaraa"]
 
 [ext_resource type="MeshLibrary" uid="uid://bcbqp6w7j2324" path="res://src/Tileset.meshlib" id="1_cati4"]
 [ext_resource type="PackedScene" uid="uid://bc3abb2aakiae" path="res://src/scenes/player.tscn" id="2_xyljk"]
+[ext_resource type="Script" path="res://src/scenes/SafeRoomLight.gd" id="3_e1fad"]
+
+[sub_resource type="Environment" id="Environment_32tkb"]
+background_mode = 1
+background_color = Color(0.0962048, 0.0962047, 0.0962048, 1)
 
 [node name="Level" type="Node3D"]
 
@@ -16,3 +21,12 @@ metadata/_editor_floor_ = Vector3(0, -1, 0)
 transform = Transform3D(1, 0, 0, 0, 0.772202, 0.635378, 0, -0.635378, 0.772202, 0, 24.6634, 22.1287)
 
 [node name="Player" parent="." instance=ExtResource("2_xyljk")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_32tkb")
+
+[node name="SafeRoomLight" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.02701, 2.88464, -0.969951)
+light_energy = 55.12
+spot_angle = 71.66
+script = ExtResource("3_e1fad")
