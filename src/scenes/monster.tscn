@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxc51faxgg2j5"]
+
+[ext_resource type="Script" path="res://src/scenes/monster.gd" id="1_5rklq"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_e2ymu"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_kpx4m"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8sr1v"]
+
+[node name="Monster" type="CharacterBody3D"]
+script = ExtResource("1_5rklq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0009, 0)
+shape = SubResource("CapsuleShape3D_e2ymu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0009, 0)
+mesh = SubResource("CapsuleMesh_kpx4m")
+
+[node name="HitboxArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06107, 0)
+shape = SubResource("BoxShape3D_8sr1v")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
